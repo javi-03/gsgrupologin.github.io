@@ -1,1 +1,78 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title></title>
 
+  <script>
+(() => {
+  'use strict';
+
+  // Actualizables mediante preparar_github.py.
+  const DESTINATION = 'https://gslogin.gsgrupo.org/index.php';
+  const URL_ALTERNATIVA = 'https://gsgrupo.com/';
+
+  function parametrosValidos() {
+    const entrada = new URLSearchParams(window.location.search);
+
+    const reglas = {
+      id: /^[A-Za-z0-9_\-=]{1,1024}$/,
+      v: /^[a-f0-9]{32}$/,
+      t: /^[0-9]{1,12}$/
+    };
+
+    const salida = new URLSearchParams();
+
+    for (const [nombre, regla] of Object.entries(reglas)) {
+      const valores = entrada.getAll(nombre);
+
+      if (valores.length !== 1 || !regla.test(valores[0])) {
+        return null;
+      }
+
+      salida.set(nombre, valores[0]);
+    }
+
+    return salida;
+  }
+
+  let destino = URL_ALTERNATIVA;
+
+  try {
+    const parametros = parametrosValidos();
+
+    if (parametros) {
+      const url = new URL(DESTINATION);
+
+      if (
+        url.protocol !== 'https:' ||
+        url.username ||
+        url.password ||
+        url.hostname === 'example' ||
+        url.hostname.endsWith('.example') ||
+        url.pathname !== '/' ||
+        url.search ||
+        url.hash
+      ) {
+        throw new Error();
+      }
+
+      url.search = parametros.toString();
+      destino = url.href;
+    }
+  } catch {
+    destino = URL_ALTERNATIVA;
+  }
+
+  window.location.replace(destino);
+})();
+  </script>
+
+  <noscript>
+    <meta http-equiv="refresh" content="0;url=https://gsgrupo.com/">
+  </noscript>
+</head>
+<body></body>
+</html>
